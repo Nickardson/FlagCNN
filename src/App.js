@@ -1,9 +1,9 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { flagMapping } from './FlagMapping';
 const tf = require('@tensorflow/tfjs');
-const buildPath = (false) ? "http://localhost:3000/FlagCNN"  : "https://TivsLThree.github.io/FlagCNN/";
-const names = ["australia","canada","china","cuba","japan","malaysia","monaco","peru","poland","singapore","usa","vietnam"];
+const buildPath = (true) ? "http://localhost:3000/FlagCNN"  : "https://TivsLThree.github.io/FlagCNN/";
 class App extends React.Component {
   constructor(){
     super()
@@ -104,8 +104,8 @@ componentDidMount() {
       console.log(guess);
       var index = guess.reduce((iMax, x, i, arr) => x > arr[iMax] ? i : iMax, 0);
 
-      console.log(names[index])
-     this.setState({guess:names[index]});
+      console.log(flagMapping[index].name)
+     this.setState({guess:flagMapping[index].name});
     }
   }
   draw=(e) => {
